@@ -26,7 +26,7 @@ ARG BUILD_X264_ENCODER_PLUGIN=0
 
 # Future: when bluetooth works with speed editor in Linux, add these packages:  bluez avahi dbus-x11 nss-mdns
 # EXTRA_PACKS are packages that may not be available but should be installed if they are.
-ARG EXTRA_PACKS=""
+ARG EXTRA_PACKS="libtool-ltdl.x86_64"
 RUN if [[ `dnf list libxcrypt-compat` == *libxcrypt-compat* ]]; then export EXTRA_PACKS="${EXTRA_PACKS} libxcrypt-compat" ; fi \
        && if [[ `dnf list compat-openssl11` == *compat-openssl11* ]]; then export EXTRA_PACKS="${EXTRA_PACKS} compat-openssl11" ; fi \
        && if [[ `dnf list compat-openssl10` == *compat-openssl10* ]]; then export EXTRA_PACKS="${EXTRA_PACKS} compat-openssl10"; fi \
