@@ -208,6 +208,7 @@ fi
      --env PULSE_SERVER=unix:${XDG_RUNTIME_DIR}/pulse/native \
      --env PULSE_COOKIE=/run/pulse/cookie \
      --env QT_AUTO_SCREEN_SCALE_FACTOR=1 \
+     --env QT_SCALE_FACTOR=2 \
      --env XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR} \
      --env RESOLVE_SCRIPT_LIB="/opt/resolve/libs/Fusion/fusionscript.so" \
      --env RESOLVE_SCRIPT_API="/opt/resolve/Developer/Scripting" \
@@ -237,6 +238,7 @@ fi
      --mount type=bind,source=${RESOLVE_MOUNTS_PATH}/${RESOLVE_COMMON_DATA_DIR},target=/var/BlackmagicDesign \
      --mount type=bind,source=${RESOLVE_MOUNTS_PATH}/${RESOLVE_DATABASE},target=/opt/resolve/Resolve\ Disk\ Database \
      --mount type=bind,source=${RESOLVE_MOUNTS_PATH}/${RESOLVE_MEDIA},target=/opt/resolve/Media \
+     --mount type=bind,source=/media/VideoExt4,target=/home/VideoExt4 \
      "${MOUNT_CURSOR_THEME[@]}" \
      "${CGROUP_RULE[@]}" \
      "${MOUNT_SYSTEM_FONTS[@]}" \
