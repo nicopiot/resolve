@@ -225,13 +225,33 @@ If it worked, you probably don't want to have to type a command every time you w
 
 # Troubleshooting
 
+## make sure there is enough free space on hard drive >20 Gb, or it could stop the building process
+successive tries end up creating multiples instances which take a lot of space. 
+if you wan't to start the building process like new, destroy all previous tries with `podman system reset`
+be careful it will destroy ALL your podman builds. 
+
+## when building : error /opt/resolve/bin/resolve: error while loading shared libraries: libltdl.so.7: cannot open shared object file: No such file or directory
+in the dockerfile, fill in the ARG EXTRA PACK variable with :  `ARG EXTRA PACKS="libtool-ltld.x86_64"`
+
+## The version I tried doesn't start
+don't know why but these versions have been tested and work fine : 
+DaVinci_Resolve_17.4.6_Linux.zip
+
+You can download legacy versions here :  https://www.videohelp.com/software/DaVinci-Resolve/old-versions 
+
+## The free version cannot handle h.264 video codec (wether in mp4 or mov or other containers). they are imported, the timeline moves, but no image, no sound. 
+
+re-encode the video (I found shutter encoder is the best for that, all others like VLC, handbrake don't work) with DNxHD codec (made for editing).
+tutorial here : 
+
+
 ## I can't move or resize Resolve's main window!  It's locked in place!
 
 Try holding down the **Super** key (which often has a Windows logo).  You should then be able to move or resize the DaVinci Resolve window.  A center-button mouse press should also bring options for minimizing, maximizing, etc.
 
 ## The windows are way too small (or too large)!
 
-Add this line to `resolve.sh` and adjust the value (try 1, 2, 1.5, etc.) to adjust how big Resolve appears on your screen:
+Add this line to `resolve.sh` after the line --env QT_AUTO_SCREEN_SCALE_FACTOR=1 \ and adjust the value (try 1, 2, 1.5, etc.) to adjust how big Resolve appears on your screen:
 
      --env QT_SCALE_FACTOR=2 \
 
